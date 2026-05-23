@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  /* Calm, faith-rooted palette */
+  --color-cream: #faf6ee;
+  --color-cream-deep: #f1e9d8;
+  --color-paper: #fffdf8;
+  --color-ink: #21302c;
+  --color-forest: #1d3b35;
+  --color-forest-deep: #122b26;
+  --color-sage: #8ba792;
+  --color-sage-soft: #cfddd0;
+  --color-sage-deep: #5a7763;
+  --color-gold: #c4a35d;
+  --color-gold-deep: #a3823c;
+  --color-stone: #5d6360;
+  --color-line: #e6ddc9;
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-inter);
+
+  --shadow-soft: 0 14px 40px -22px rgba(29, 59, 53, 0.35);
+  --shadow-lift: 0 26px 60px -26px rgba(29, 59, 53, 0.45);
+  --shadow-card: 0 2px 4px rgba(29, 59, 53, 0.04),
+    0 18px 44px -28px rgba(29, 59, 53, 0.4);
+
+  --ease-out-soft: cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-sage) 50%, transparent);
+  color: var(--color-forest-deep);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-sage-deep) 55%, transparent);
+  border-radius: 999px;
+  border: 3px solid var(--color-cream-deep);
+}
+
+/* Scroll-reveal animation */
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: reveal-rise 0.85s var(--ease-out-soft) forwards;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .animate-float {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
+/* Soft layered glow for dark sections */
+.bg-grain {
+  background-image: radial-gradient(
+      circle at 18% 22%,
+      rgba(196, 163, 93, 0.16),
+      transparent 55%
+    ),
+    radial-gradient(circle at 86% 14%, rgba(139, 167, 146, 0.18), transparent 50%);
+}
