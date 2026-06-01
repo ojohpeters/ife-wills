@@ -11,12 +11,18 @@ import {
   SectionHeading,
 } from "@/components/sections";
 import { ArrowRight, Check, Icon } from "@/components/icons";
-import { addOns, feeSchedule, services } from "@/lib/content";
+import {
+  addOns,
+  feeSchedule,
+  financialNote,
+  services,
+  servicesIntro,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Services & Fees",
   description:
-    "Christian Trauma Care, Youth Mental Health Coaching, and Trauma-Informed Coaching — compassionate, trauma-informed support with clear, transparent fees.",
+    "One-on-One Coaching and Group Coaching — compassionate, Scripture-guided, trauma-informed support with clear, transparent fees.",
 };
 
 const paymentNotes = [
@@ -24,18 +30,23 @@ const paymentNotes = [
   "Credit/debit cards and digital payments accepted",
   "Sliding-scale options available upon request",
   "No insurance billing at this time",
-  "Virtual sessions available for clients in approved regions",
+  "All sessions are virtual — accessible from anywhere",
 ];
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Services"
-        title="Compassionate, trauma-informed support for individuals, youth, and families."
-        description="Every service is designed to provide a safe, confidential, and supportive environment where clients can heal, grow, and regain emotional stability — tailored to the unique needs of each person."
+        eyebrow={servicesIntro.eyebrow}
+        title={servicesIntro.title}
+        description={servicesIntro.description}
       >
-        <Button href="/book">Book a Session</Button>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/book">Book a Session</Button>
+          <Button href="/faq" variant="ghost" icon={false}>
+            Read the FAQ
+          </Button>
+        </div>
       </PageHero>
 
       {/* SERVICE DETAIL BLOCKS */}
@@ -43,7 +54,7 @@ export default function ServicesPage() {
         <Container>
           <div className="space-y-8">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 60}>
+              <Reveal key={service.slug} delay={i * 80}>
                 <article className="grid gap-8 rounded-[2rem] border border-line bg-paper p-8 transition-shadow duration-300 hover:shadow-card sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
                   {/* Meta */}
                   <div className="flex flex-col">
@@ -58,22 +69,34 @@ export default function ServicesPage() {
                     <h2 className="mt-6 font-display text-2xl font-medium leading-snug text-forest sm:text-[1.7rem]">
                       {service.name}
                     </h2>
+                    <p className="mt-3 font-display text-base italic text-sage-deep">
+                      {service.tagline}
+                    </p>
                     <div className="mt-6 flex flex-wrap gap-3">
                       <span className="inline-flex items-center gap-2 rounded-full bg-cream-deep/70 px-4 py-2 text-sm font-medium text-forest">
                         <Icon name="clock" className="h-4 w-4 text-sage-deep" />
                         {service.length}
                       </span>
                       <span className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-sm font-medium text-cream">
-                        {service.fee} per session
+                        {service.fee}
                       </span>
                     </div>
-                    <Link
-                      href="/book"
-                      className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-forest"
-                    >
-                      Book this service
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                    <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+                      <Link
+                        href={service.href}
+                        className="group inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest-deep hover:shadow-lift"
+                      >
+                        Learn more
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                      <Link
+                        href="/book"
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-forest"
+                      >
+                        Book this service
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Content */}
@@ -102,33 +125,33 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* ADD-ONS */}
+      {/* ADD-ON */}
       <section className="bg-cream-deep/50 py-24 sm:py-28">
         <Container>
           <SectionHeading
             eyebrow="Additional Support"
-            title="Add-ons and assessments to meet you where you are."
-            description="Thoughtful options that complement your coaching — chosen by you, never assumed."
+            title="An intake session for a thoughtful starting point."
+            description="When you're ready for ongoing work, an in-depth intake gives Ife a clear understanding of your story before coaching begins."
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mx-auto mt-14 grid max-w-3xl gap-6">
             {addOns.map((addon, i) => (
               <Reveal key={addon.name} delay={i * 110}>
-                <article className="flex h-full flex-col rounded-3xl border border-line bg-paper p-8">
+                <article className="flex h-full flex-col rounded-3xl border border-line bg-paper p-8 sm:p-10">
                   <div className="flex items-start justify-between gap-4">
                     <span className="flex h-13 w-13 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep">
                       <Icon name={addon.icon} className="h-6 w-6" />
                     </span>
-                    <span className="font-display text-2xl font-medium text-forest">
+                    <span className="font-display text-3xl font-medium text-forest">
                       {addon.fee}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-xl font-medium text-forest">
+                  <h3 className="mt-6 font-display text-2xl font-medium text-forest">
                     {addon.name}
                   </h3>
                   <p className="mt-1 text-sm font-medium text-sage-deep">
                     {addon.length}
                   </p>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-stone">
+                  <p className="mt-4 text-sm leading-relaxed text-stone">
                     {addon.note}
                   </p>
                 </article>
@@ -152,7 +175,7 @@ export default function ServicesPage() {
             </Reveal>
             <Reveal delay={150}>
               <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-paper">
-                <div className="grid grid-cols-[1.6fr_1fr_0.7fr] gap-4 bg-forest px-6 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-cream/85">
+                <div className="grid grid-cols-[1.6fr_1fr_0.9fr] gap-4 bg-forest px-6 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-cream/85">
                   <span>Service</span>
                   <span>Session Length</span>
                   <span className="text-right">Fee</span>
@@ -160,7 +183,7 @@ export default function ServicesPage() {
                 {feeSchedule.map((row, i) => (
                   <div
                     key={row.service}
-                    className={`grid grid-cols-[1.6fr_1fr_0.7fr] items-center gap-4 px-6 py-4 ${
+                    className={`grid grid-cols-[1.6fr_1fr_0.9fr] items-center gap-4 px-6 py-4 ${
                       i !== feeSchedule.length - 1
                         ? "border-b border-line"
                         : ""
@@ -170,11 +193,29 @@ export default function ServicesPage() {
                       {row.service}
                     </span>
                     <span className="text-sm text-stone">{row.length}</span>
-                    <span className="text-right font-display text-lg font-medium text-forest">
+                    <span className="text-right font-display text-base font-medium leading-tight text-forest sm:text-lg">
                       {row.fee}
                     </span>
                   </div>
                 ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={210}>
+              <div className="mt-8 flex flex-col items-start gap-4 rounded-3xl border border-gold/30 bg-gold/8 px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold/25 text-gold-deep">
+                    <Icon name="heart" className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-display text-lg font-medium text-forest">
+                      {financialNote.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-stone">
+                      {financialNote.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -213,9 +254,9 @@ export default function ServicesPage() {
         <Container className="relative text-center">
           <Reveal>
             <p className="mx-auto max-w-2xl font-display text-2xl italic leading-relaxed text-forest sm:text-[1.7rem]">
-              Whether you&apos;re seeking support for yourself, your teen, or
-              your family, you deserve a space where you can heal, grow, and
-              feel supported every step of the way.
+              Whether you&apos;re seeking one-on-one support or the community
+              of a group cohort, you deserve a space where you can heal, grow,
+              and feel supported every step of the way.
             </p>
           </Reveal>
         </Container>

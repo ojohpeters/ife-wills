@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import {
   BotanicalArt,
@@ -6,247 +7,367 @@ import {
   Container,
   CtaBand,
   Eyebrow,
-  PageHero,
-  SectionHeading,
 } from "@/components/sections";
 import { Check, Icon, Quote, Sprout } from "@/components/icons";
-import {
-  aboutSafeSpace,
-  credentials,
-  expertise,
-  scripture,
-} from "@/lib/content";
+import { aboutContent, credentials } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About Ife Williams",
   description:
-    "For more than two decades, Ife Williams has dedicated his life to helping individuals, youth, and families navigate trauma, emotional pain, and life's hardest seasons.",
+    "A trusted guide for biblical healing, restoration, and emotional resilience — drawing on two decades of service across ministry, banking, healthcare, logistics, aviation, and the United States Air Force National Guard.",
 };
 
+function ScriptureBlock({
+  reference,
+  text,
+  tone = "light",
+}: {
+  reference: string;
+  text: string;
+  tone?: "light" | "dark";
+}) {
+  const isDark = tone === "dark";
+  return (
+    <Reveal delay={140}>
+      <figure
+        className={`mt-8 rounded-3xl border p-7 sm:p-8 ${
+          isDark
+            ? "border-cream/12 bg-cream/5 text-cream"
+            : "border-line bg-paper"
+        }`}
+      >
+        <Quote className={`h-8 w-8 ${isDark ? "text-gold" : "text-gold-deep"}`} />
+        <blockquote
+          className={`mt-3 font-display text-lg italic leading-relaxed sm:text-xl ${
+            isDark ? "text-cream" : "text-forest"
+          }`}
+        >
+          &ldquo;{text}&rdquo;
+        </blockquote>
+        <figcaption
+          className={`mt-5 text-xs font-semibold uppercase tracking-[0.2em] ${
+            isDark ? "text-gold" : "text-sage-deep"
+          }`}
+        >
+          {reference}
+        </figcaption>
+      </figure>
+    </Reveal>
+  );
+}
+
 export default function AboutPage() {
+  const { hero, journey, foundation, approach, service, why } = aboutContent;
+
   return (
     <>
-      <PageHero
-        eyebrow="About Ife Williams"
-        title="A trusted guide for healing, restoration, and emotional resilience."
-        description="For more than two decades, Ife Williams has dedicated his life to helping individuals, young adults, and families navigate emotional pain, trauma, and life's most challenging seasons."
-      >
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/book">Book a Session</Button>
-          <Button href="/services" variant="ghost" icon={false}>
-            Explore Services
-          </Button>
-        </div>
-      </PageHero>
-
-      {/* BIO */}
-      <section className="py-24 sm:py-28">
-        <Container className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-16">
+      {/* ============ HERO ============ */}
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute -right-32 -top-40 h-[34rem] w-[34rem] rounded-full bg-sage-soft/45 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -left-32 top-44 h-96 w-96 rounded-full bg-gold/10 blur-3xl"
+        />
+        <Container className="relative grid gap-14 pb-20 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:pb-28 lg:pt-24">
           <div>
             <Reveal>
-              <Eyebrow>The Heart Behind the Practice</Eyebrow>
+              <Eyebrow>{hero.eyebrow}</Eyebrow>
             </Reveal>
             <Reveal delay={90}>
-              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
-                A rare combination of non-clinical understanding, spiritual
-                insight, and compassionate presence.
-              </h2>
+              <h1 className="mt-6 font-display text-[2.55rem] font-medium leading-[1.06] tracking-tight text-forest sm:text-5xl md:text-[3.7rem]">
+                {hero.title}
+              </h1>
             </Reveal>
-            <div className="mt-6 space-y-5 text-base leading-relaxed text-stone">
-              <Reveal delay={140}>
-                <p>
-                  As a Certified Christian Trauma Care Provider,
-                  Board-Certified Youth Mental Health Coach, and Certified
-                  Master Trauma-Informed Care Coach, Ife brings a depth of
-                  experience few can match. His coaching is built on a simple
-                  but powerful foundation:{" "}
-                  <span className="font-medium text-forest">
-                    every person deserves a safe place to heal, grow, and
-                    rediscover hope.
-                  </span>
-                </p>
-              </Reveal>
-              <Reveal delay={190}>
-                <p>
-                  His approach is gentle yet deeply informed, integrating
-                  trauma-aware strategies with faith-aligned principles for
-                  clients who desire them. Whether someone is processing past
-                  wounds, navigating emotional overwhelm, or seeking clarity in
-                  a difficult season, Ife provides a steady, grounded, and
-                  supportive environment where healing can begin.
-                </p>
-              </Reveal>
-            </div>
-
-            <Reveal delay={240}>
-              <div className="mt-8 rounded-3xl border border-line bg-cream-deep/55 p-7">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-forest text-cream">
-                    <Sprout className="h-5 w-5" />
-                  </span>
-                  <p className="font-display text-lg font-medium text-forest">
-                    Coaching, not ministry
-                  </p>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-stone">
-                  While Ife is also a pastor, his coaching is{" "}
-                  <span className="font-medium text-forest">
-                    not a ministry
-                  </span>{" "}
-                  — it is a professional, confidential, and structured service
-                  designed to support your emotional and mental well-being.
-                </p>
+            <Reveal delay={150}>
+              <div className="mt-7 space-y-2.5 font-display text-lg italic leading-relaxed text-sage-deep sm:text-xl">
+                {hero.lines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={230}>
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-stone">
+                {hero.closing}
+              </p>
+            </Reveal>
+            <Reveal delay={290}>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Button href="/book">Book a Session</Button>
+                <Button href="/services" variant="ghost" icon={false}>
+                  Explore Services
+                </Button>
               </div>
             </Reveal>
           </div>
 
-          {/* Portrait + credentials */}
-          <Reveal delay={160} className="relative lg:sticky lg:top-28">
+          {/* Portrait card */}
+          <Reveal delay={200} className="relative">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] bg-linear-to-br from-forest via-forest to-sage-deep p-9 shadow-lift">
-                <div className="bg-grain absolute inset-0" aria-hidden="true" />
-                <BotanicalArt className="absolute -right-8 -top-8 h-72 w-auto text-cream/10" />
-                <div className="relative flex flex-col items-center text-center">
-                  <span className="flex h-28 w-28 items-center justify-center rounded-full bg-cream font-display text-4xl font-medium text-forest shadow-lift">
-                    IW
-                  </span>
-                  <p className="mt-6 font-display text-2xl font-medium text-cream">
+              {/* Photograph */}
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-williams.jpg"
+                  alt="Ife Williams — trauma-informed coach and pastor"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  priority
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest/25 to-transparent" />
+                <BotanicalArt className="absolute -right-6 -bottom-4 h-44 w-auto text-cream/20" />
+                <div className="absolute inset-x-0 bottom-0 p-7 text-cream sm:p-8">
+                  <p className="text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-gold">
+                    Pastor · Coach · Speaker
+                  </p>
+                  <p className="mt-3 font-display text-[2rem] font-medium leading-[1.05]">
                     Ife Williams
                   </p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    Trauma-Informed Coach &amp; Pastor
+                  <p className="mt-1 font-display text-base italic text-cream/75">
+                    Trauma-Informed Care · Faith-Rooted
                   </p>
-                  <div className="mt-7 w-full space-y-3 border-t border-cream/15 pt-7 text-left">
-                    {credentials.map((credential) => (
-                      <div
-                        key={credential}
-                        className="flex items-start gap-2.5"
-                      >
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                        <span className="text-sm text-cream/80">
-                          {credential}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
+              </div>
+
+              {/* Floating credentials card */}
+              <div className="relative z-10 -mt-12 ml-auto mr-0 w-[88%] rounded-[1.75rem] border border-line bg-paper px-6 py-5 shadow-card sm:w-[78%]">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
+                  Certifications
+                </p>
+                <ul className="mt-3 space-y-2.5">
+                  {credentials.map((c) => (
+                    <li key={c} className="flex items-start gap-2.5">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
+                      <span className="text-sm leading-snug text-forest">
+                        {c}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* SCRIPTURE / CALLING */}
+      {/* ============ JOURNEY ============ */}
+      <section className="border-t border-line bg-cream-deep/45 py-24 sm:py-28">
+        <Container className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
+          <Reveal>
+            <Eyebrow>{journey.eyebrow}</Eyebrow>
+            <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+              From real-world moments — not textbooks.
+            </h2>
+          </Reveal>
+          <div className="space-y-5 text-base leading-relaxed text-stone">
+            {journey.paragraphs.map((p, i) => (
+              <Reveal key={i} delay={120 + i * 60}>
+                <p>{p}</p>
+              </Reveal>
+            ))}
+            <ScriptureBlock
+              reference={journey.scripture.reference}
+              text={journey.scripture.text}
+            />
+            <Reveal delay={290}>
+              <p className="mt-6 font-display text-lg italic text-forest">
+                {journey.closing}
+              </p>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ============ FOUNDATION ============ */}
+      <section className="py-24 sm:py-28">
+        <Container className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
+          <Reveal>
+            <Eyebrow>{foundation.eyebrow}</Eyebrow>
+            <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+              {foundation.title}
+            </h2>
+          </Reveal>
+          <div className="space-y-5 text-base leading-relaxed text-stone">
+            {foundation.paragraphs.map((p, i) => (
+              <Reveal key={i} delay={120 + i * 60}>
+                <p>{p}</p>
+              </Reveal>
+            ))}
+            <ScriptureBlock
+              reference={foundation.scripture.reference}
+              text={foundation.scripture.text}
+            />
+          </div>
+        </Container>
+      </section>
+
+      {/* ============ GENTLE APPROACH ============ */}
       <section className="relative overflow-hidden bg-forest text-cream">
         <div className="bg-grain absolute inset-0" aria-hidden="true" />
         <BotanicalArt className="absolute -right-12 -top-16 h-96 w-auto text-cream/8" />
+        <BotanicalArt className="absolute -left-12 -bottom-20 h-80 w-auto rotate-180 text-cream/8" />
         <Container className="relative py-24 sm:py-28">
-          <SectionHeading
-            eyebrow="A Calling Rooted in Scripture & Compassion"
-            title="His work is shaped by the heart of restoration."
-            description="Ife's calling reflects the promise of binding up the brokenhearted, proclaiming freedom, and rebuilding what has long been devastated — walking with people through their pain toward strength and dignity."
-            tone="light"
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {scripture.map((verse, i) => (
-              <Reveal key={verse.reference} delay={i * 130}>
-                <figure className="h-full rounded-3xl border border-cream/12 bg-cream/5 p-8">
-                  <Quote className="h-9 w-9 text-gold" />
-                  <blockquote className="mt-4 font-display text-xl italic leading-relaxed text-cream">
-                    {verse.text}
-                  </blockquote>
-                  <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    {verse.reference}
-                  </figcaption>
-                </figure>
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
+            <Reveal>
+              <Eyebrow tone="light">{approach.eyebrow}</Eyebrow>
+              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight sm:text-4xl">
+                {approach.title}
+              </h2>
+            </Reveal>
+            <div className="space-y-6 text-base leading-relaxed text-cream/80">
+              {approach.paragraphs.map((p, i) => (
+                <Reveal key={i} delay={120 + i * 60}>
+                  <p>{p}</p>
+                </Reveal>
+              ))}
+              <Reveal delay={220}>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
+                  Whether someone is
+                </p>
+                <ul className="mt-3 space-y-2.5">
+                  {approach.whether.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-base text-cream"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
-            ))}
+              <Reveal delay={290}>
+                <p className="font-display text-lg italic text-cream/85">
+                  {approach.closing}
+                </p>
+              </Reveal>
+              <ScriptureBlock
+                reference={approach.scripture.reference}
+                text={approach.scripture.text}
+                tone="dark"
+              />
+              <Reveal delay={400}>
+                <p className="text-base leading-relaxed text-cream/80">
+                  {approach.afterScripture}
+                </p>
+              </Reveal>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* EXPERTISE */}
+      {/* ============ LIFE OF SERVICE ============ */}
       <section className="py-24 sm:py-28">
         <Container>
-          <SectionHeading
-            eyebrow="Professional Expertise with a Personal Touch"
-            title="Decades of experience across a wide range of needs."
-            description="Ife's experience allows him to support people through many of life's most difficult and tender places."
-          />
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {expertise.map((item, i) => (
-              <Reveal key={item} delay={i * 80}>
-                <div className="flex items-center gap-4 rounded-2xl border border-line bg-paper p-6 transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sage-soft/55 text-sage-deep">
-                    <Check className="h-5 w-5" />
-                  </span>
-                  <p className="font-medium text-forest">{item}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <div className="flex justify-center">
+                <Eyebrow>{service.eyebrow}</Eyebrow>
+              </div>
+            </Reveal>
+            <Reveal delay={90}>
+              <h2 className="mt-6 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+                {service.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={150}>
+              <p className="mt-6 text-base leading-relaxed text-stone">
+                {service.intro}
+              </p>
+            </Reveal>
           </div>
-        </Container>
-      </section>
 
-      {/* SAFE SPACE PRINCIPLES */}
-      <section className="bg-cream-deep/50 py-24 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="A Safe Space for Your Story"
-            title="Healing happens when people feel seen, heard, and supported."
-            description="Every session is an invitation to breathe, process, and take meaningful steps toward wholeness."
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {aboutSafeSpace.map((item, i) => (
-              <Reveal key={item.title} delay={i * 90}>
-                <article className="flex h-full gap-4 rounded-3xl border border-line bg-paper p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep">
-                    <Icon name={item.icon} className="h-6 w-6" />
+          <div className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {service.industries.map((industry, i) => (
+              <Reveal key={industry.label} delay={i * 90}>
+                <article className="flex h-full flex-col items-center gap-3 rounded-3xl border border-line bg-paper p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep">
+                    <Icon name={industry.icon} className="h-6 w-6" />
                   </span>
-                  <div>
-                    <h3 className="font-display text-lg font-medium text-forest">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-stone">
-                      {item.text}
-                    </p>
-                  </div>
+                  <p className="font-medium text-forest">{industry.label}</p>
                 </article>
               </Reveal>
             ))}
           </div>
+
+          <div className="mx-auto mt-12 max-w-3xl space-y-6 text-center">
+            <Reveal delay={120}>
+              <p className="text-base leading-relaxed text-stone">
+                {service.body}
+              </p>
+            </Reveal>
+            <Reveal delay={180}>
+              <div className="rounded-[2rem] border border-line bg-cream-deep/55 px-7 py-8">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-deep">
+                  U.S. Air Force National Guard
+                </span>
+                <p className="mt-3 text-base leading-relaxed text-forest">
+                  {service.military}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={240}>
+              <figure className="mt-6 rounded-3xl border border-line bg-paper p-7 text-left sm:p-8">
+                <Quote className="h-8 w-8 text-gold-deep" />
+                <blockquote className="mt-3 font-display text-lg italic leading-relaxed text-forest sm:text-xl">
+                  &ldquo;{service.scripture.text}&rdquo;
+                </blockquote>
+                <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-sage-deep">
+                  {service.scripture.reference}
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
-      {/* CLOSING STATEMENT */}
-      <section className="py-24 sm:py-28">
+      {/* ============ WHY HE DOES THIS ============ */}
+      <section className="bg-cream-deep/55 py-24 sm:py-28">
         <Container>
-          <Reveal>
-            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2.5rem] border border-line bg-cream-deep/55 px-8 py-16 text-center sm:px-14">
-              <BotanicalArt className="absolute -left-10 -bottom-12 h-72 w-auto text-sage/20" />
-              <div className="relative">
-                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest text-cream mx-auto">
-                  <Sprout className="h-7 w-7" />
-                </span>
-                <h2 className="mt-7 font-display text-3xl font-medium leading-[1.16] tracking-tight text-forest sm:text-[2.4rem]">
-                  Walking with you toward restoration.
-                </h2>
-                <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-stone">
-                  Whether you are seeking healing from past trauma, support for
-                  your teen, or guidance through a difficult season, Ife is
-                  committed to walking with you — one step at a time. You
-                  deserve healing. You deserve hope. You deserve a future that
-                  feels whole again.
-                </p>
-                <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                  <Button href="/book">Begin your healing journey</Button>
-                  <Button href="/podcast" variant="ghost" icon={false}>
-                    Listen to the podcast
-                  </Button>
-                </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <div className="flex justify-center">
+                <Eyebrow>{why.eyebrow}</Eyebrow>
               </div>
+            </Reveal>
+            <Reveal delay={90}>
+              <h2 className="mt-6 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+                {why.title}
+              </h2>
+            </Reveal>
+            <div className="mt-6 space-y-5 text-base leading-relaxed text-stone">
+              {why.paragraphs.map((p, i) => (
+                <Reveal key={i} delay={140 + i * 60}>
+                  <p>{p}</p>
+                </Reveal>
+              ))}
             </div>
-          </Reveal>
+            <div className="mt-10 space-y-3.5 text-left">
+              {why.invitations.map((inv, i) => (
+                <Reveal key={inv} delay={220 + i * 80}>
+                  <p className="flex items-start gap-4 rounded-2xl border border-line bg-paper px-6 py-4 font-display text-base italic leading-relaxed text-forest sm:text-lg">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-deep" />
+                    {inv}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={500}>
+              <p className="mx-auto mt-10 max-w-2xl font-display text-xl italic leading-relaxed text-sage-deep">
+                {why.closing}
+              </p>
+            </Reveal>
+            <Reveal delay={580}>
+              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button href="/book">Begin your healing journey</Button>
+                <Button href="/podcast" variant="ghost" icon={false}>
+                  Listen to the podcast
+                </Button>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

@@ -8,16 +8,24 @@ import {
   Eyebrow,
   SectionHeading,
 } from "@/components/sections";
-import { ArrowRight, Check, Icon, Quote, Sprout, Star } from "@/components/icons";
 import {
-  clientValues,
+  ArrowRight,
+  Check,
+  Icon,
+  Quote,
+  Sprout,
+  Star,
+} from "@/components/icons";
+import {
+  audience,
   credentials,
-  pastoralSupportPreview,
+  financialNote,
+  homeHero,
   principles,
   scripture,
   services,
   stats,
-  struggles,
+  trustedGuide,
 } from "@/lib/content";
 
 export default function Home() {
@@ -37,23 +45,24 @@ export default function Home() {
         <Container className="relative grid gap-16 pb-20 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:pb-28 lg:pt-20">
           <div>
             <Reveal>
-              <Eyebrow>Compassionate · Trauma-Informed Coaching</Eyebrow>
+              <Eyebrow>{homeHero.eyebrow}</Eyebrow>
             </Reveal>
             <Reveal delay={90}>
-              <h1 className="mt-6 font-display text-[2.7rem] font-medium leading-[1.04] tracking-tight text-forest sm:text-6xl md:text-[4.1rem]">
-                Healing is possible — and you don&apos;t have to walk through
-                it alone.
+              <h1 className="mt-6 font-display text-[2.55rem] font-medium leading-[1.06] tracking-tight text-forest sm:text-5xl md:text-[3.7rem]">
+                {homeHero.title}
               </h1>
             </Reveal>
             <Reveal delay={160}>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-stone">
-                For more than two decades, Ife Williams has guided individuals,
-                youth, and families through trauma, emotional overwhelm, and
-                life&apos;s hardest seasons — with a calm, grounded, and deeply
-                respectful approach.
+                {homeHero.paragraphs[0]}
               </p>
             </Reveal>
-            <Reveal delay={230}>
+            <Reveal delay={210}>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-stone">
+                {homeHero.paragraphs[1]}
+              </p>
+            </Reveal>
+            <Reveal delay={290}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href="/book">Book a Session</Button>
                 <Button href="/services" variant="ghost" icon={false}>
@@ -61,7 +70,7 @@ export default function Home() {
                 </Button>
               </div>
             </Reveal>
-            <Reveal delay={300}>
+            <Reveal delay={360}>
               <div className="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5 border-t border-line pt-7">
                 {stats.map((stat) => (
                   <div key={stat.label}>
@@ -86,7 +95,7 @@ export default function Home() {
                 <div className="relative flex aspect-[4/5] flex-col justify-between">
                   <div className="flex items-center justify-between">
                     <span className="rounded-full bg-cream/10 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
-                      Faith-rooted care
+                      Virtual · faith-rooted
                     </span>
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-cream">
                       <Sprout className="h-6 w-6" />
@@ -114,7 +123,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-forest">
                     20+ years
                   </p>
-                  <p className="text-xs text-stone">of trusted care</p>
+                  <p className="text-xs text-stone">walking with people</p>
                 </div>
               </div>
 
@@ -126,7 +135,7 @@ export default function Home() {
                   <p className="text-sm font-semibold text-forest">
                     Confidential
                   </p>
-                  <p className="text-xs text-stone">judgment-free space</p>
+                  <p className="text-xs text-stone">virtual · anywhere</p>
                 </div>
               </div>
             </div>
@@ -156,64 +165,29 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ============ WELCOME ============ */}
-      <section className="relative overflow-hidden py-24 sm:py-28">
-        <BotanicalArt className="absolute -left-10 top-10 h-80 w-auto text-sage/15" />
-        <Container className="relative">
-          <div className="mx-auto max-w-3xl text-center">
-            <Reveal>
-              <div className="flex justify-center">
-                <Eyebrow>Welcome</Eyebrow>
-              </div>
-            </Reveal>
-            <Reveal delay={90}>
-              <h2 className="mt-6 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl md:text-[2.85rem]">
-                A safe space, a skilled guide, and a compassionate approach
-                that honors the whole person.
-              </h2>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="mt-6 text-lg leading-relaxed text-stone">
-                Life&apos;s challenges can leave deep emotional and spiritual
-                wounds. Healing takes more than time — it takes the right
-                support. As a Certified Christian Trauma Care Provider,
-                Board-Certified Youth Mental Health Coach, and Master
-                Trauma-Informed Care Coach, Ife brings a rare blend of
-                non-clinical insight, faith-based understanding, and practical
-                strategy to every client he serves.
-              </p>
-            </Reveal>
-            <Reveal delay={230}>
-              <p className="mt-5 font-display text-xl italic leading-relaxed text-sage-deep">
-                His coaching is built on one core belief: healing is possible,
-                and you don&apos;t have to walk through it alone.
-              </p>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      {/* ============ WHO IT'S FOR ============ */}
-      <section className="bg-cream-deep/50 py-24 sm:py-28">
+      {/* ============ TARGETED AUDIENCE — Adults 18+ ============ */}
+      <section className="py-24 sm:py-28">
         <Container>
           <SectionHeading
-            eyebrow="Are You Carrying Something Heavy?"
-            title="You don't have to keep holding it on your own."
-            description="Many of the people Ife works with arrive tired, overwhelmed, or unsure where to begin. Wherever you are, there is a path forward — and a steady guide for the walk."
+            eyebrow={audience.eyebrow}
+            title={audience.title}
+            description={audience.description}
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {struggles.map((item, i) => (
-              <Reveal key={item.title} delay={i * 110}>
-                <article className="group h-full rounded-3xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep transition-colors duration-300 group-hover:bg-forest group-hover:text-cream">
-                    <Icon name={item.icon} className="h-7 w-7" />
+          <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
+            {audience.groups.map((group, i) => (
+              <Reveal key={group.title} delay={i * 130}>
+                <article className="group flex h-full gap-5 rounded-3xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep transition-colors duration-300 group-hover:bg-forest group-hover:text-cream">
+                    <Icon name={group.icon} className="h-7 w-7" />
                   </span>
-                  <h3 className="mt-6 font-display text-xl font-medium text-forest">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-stone">
-                    {item.text}
-                  </p>
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-forest">
+                      {group.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-stone">
+                      {group.text}
+                    </p>
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -221,8 +195,8 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ============ MEET IFE ============ */}
-      <section className="py-24 sm:py-28">
+      {/* ============ TRUSTED GUIDE — What He Provides ============ */}
+      <section className="bg-cream-deep/55 py-24 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
@@ -258,33 +232,30 @@ export default function Home() {
 
           <div className="order-1 lg:order-2">
             <Reveal>
-              <Eyebrow>Meet Ife Williams</Eyebrow>
+              <Eyebrow>{trustedGuide.eyebrow}</Eyebrow>
             </Reveal>
             <Reveal delay={90}>
               <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
-                A trusted guide for healing, restoration, and emotional
-                resilience.
+                {trustedGuide.title}
               </h2>
             </Reveal>
             <Reveal delay={150}>
               <p className="mt-5 text-base leading-relaxed text-stone">
-                With more than twenty years of experience, Ife has become a
-                trusted coach for those navigating trauma, emotional overwhelm,
-                spiritual distress, and life transitions. His approach is warm,
-                grounded, and deeply respectful of each person&apos;s story.
-                Though he is also a pastor, his coaching is a professional,
-                structured, and confidential service — never a ministry.
+                {trustedGuide.description}
               </p>
             </Reveal>
             <Reveal delay={210}>
-              <ul className="mt-7 space-y-3">
-                {clientValues.map((value) => (
-                  <li key={value} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sage-soft/70 text-sage-deep">
-                      <Check className="h-3.5 w-3.5" />
+              <p className="mt-7 text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep">
+                He provides
+              </p>
+              <ul className="mt-4 space-y-3.5">
+                {trustedGuide.provides.map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-sage-soft/65 text-sage-deep">
+                      <Icon name={item.icon} className="h-4 w-4" />
                     </span>
                     <span className="text-sm leading-relaxed text-ink">
-                      {value}
+                      {item.title}
                     </span>
                   </li>
                 ))}
@@ -302,13 +273,13 @@ export default function Home() {
       </section>
 
       {/* ============ SERVICES ============ */}
-      <section className="bg-cream-deep/50 py-24 sm:py-28">
+      <section className="py-24 sm:py-28">
         <Container>
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               eyebrow="Services"
-              title="Coaching tailored to where you are."
-              description="Every service offers a safe, confidential, and supportive environment where clients can heal, grow, and regain emotional stability."
+              title="Two paths to healing — chosen for the season you're in."
+              description="Every service offers a safe, confidential, and grace-filled environment where you can heal, grow, and regain emotional stability."
             />
             <Reveal delay={160} className="shrink-0">
               <Button href="/services" variant="ghost">
@@ -317,85 +288,81 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 100}>
-                <article className="group flex h-full flex-col rounded-3xl border border-line bg-paper p-7 transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest text-cream">
-                    <Icon name={service.icon} className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-6 font-display text-xl font-medium leading-snug text-forest">
-                    {service.name}
-                  </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">
-                    {service.summary}
-                  </p>
-                  <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-                    <div className="text-sm">
+              <Reveal key={service.slug} delay={i * 110}>
+                <Link
+                  href={service.href}
+                  className="group block h-full rounded-3xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card"
+                >
+                  <div className="flex h-full flex-col">
+                    <div className="flex items-start justify-between">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest text-cream">
+                        <Icon name={service.icon} className="h-7 w-7" />
+                      </span>
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep">
+                        {service.length}
+                      </span>
+                    </div>
+                    <h3 className="mt-6 font-display text-2xl font-medium leading-snug text-forest">
+                      {service.name}
+                    </h3>
+                    <p className="mt-2 font-display text-base italic text-sage-deep">
+                      {service.tagline}
+                    </p>
+                    <p className="mt-4 flex-1 text-sm leading-relaxed text-stone">
+                      {service.summary}
+                    </p>
+                    <div className="mt-7 flex items-center justify-between border-t border-line pt-5">
                       <span className="font-display text-lg font-medium text-forest">
                         {service.fee}
                       </span>
-                      <span className="text-stone"> · {service.length}</span>
+                      <span className="inline-flex items-center gap-2 text-sm font-medium text-forest transition-colors group-hover:text-gold-deep">
+                        Learn more
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     </div>
-                    <Link
-                      href="/services"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-deep text-forest transition-colors duration-300 group-hover:bg-forest group-hover:text-cream"
-                      aria-label={`Learn more about ${service.name}`}
-                    >
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
                   </div>
-                </article>
+                </Link>
               </Reveal>
             ))}
-
-            {/* Pastoral Support — listed as the 4th service on the PDF Welcome */}
-            <Reveal delay={services.length * 100}>
-              <article className="group flex h-full flex-col rounded-3xl border border-line bg-paper p-7 transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card">
-                <div className="flex items-center justify-between">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sage-soft/60 text-sage-deep">
-                    <Icon name={pastoralSupportPreview.icon} className="h-7 w-7" />
-                  </span>
-                  <span className="rounded-full bg-gold/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-gold-deep">
-                    {pastoralSupportPreview.badge}
-                  </span>
-                </div>
-                <h3 className="mt-6 font-display text-xl font-medium leading-snug text-forest">
-                  {pastoralSupportPreview.name}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">
-                  {pastoralSupportPreview.summary}
-                </p>
-                <div className="mt-6 flex items-center justify-between border-t border-line pt-5">
-                  <div className="text-sm">
-                    <span className="font-display text-lg font-medium text-forest">
-                      {pastoralSupportPreview.fee}
-                    </span>
-                    <span className="text-stone">
-                      {" "}· {pastoralSupportPreview.length}
-                    </span>
-                  </div>
-                  <Link
-                    href="/services"
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-deep text-forest transition-colors duration-300 group-hover:bg-forest group-hover:text-cream"
-                    aria-label="Learn more about Pastoral Support"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </article>
-            </Reveal>
           </div>
+
+          {/* Financial assistance note */}
+          <Reveal delay={300}>
+            <div className="mt-10 flex flex-col items-start gap-4 rounded-3xl border border-line bg-cream-deep/60 px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-start gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gold/20 text-gold-deep">
+                  <Icon name="heart" className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-display text-lg font-medium text-forest">
+                    {financialNote.title}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-stone">
+                    {financialNote.description}
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/book"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-forest/25 px-5 py-2.5 text-sm font-medium text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-cream"
+              >
+                Reach out
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ============ APPROACH / SAFE SPACE ============ */}
-      <section className="py-24 sm:py-28">
+      <section className="bg-cream-deep/55 py-24 sm:py-28">
         <Container>
           <SectionHeading
             eyebrow="A Safe Space for Real Healing"
             title="Five principles that shape every session."
-            description="Ife's practice is built on commitments that foster genuine transformation — so you always know what to expect when you walk through the door."
+            description="Ife's practice is built on commitments that foster genuine transformation — so you always know what to expect when you arrive."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {principles.map((principle, i) => (
@@ -449,8 +416,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={90}>
               <h2 className="mt-6 font-display text-3xl font-medium leading-[1.14] tracking-tight sm:text-4xl">
-                Walking with people through their pain — and helping them
-                rebuild with strength and dignity.
+                The God who heals, restores, and renews — that is the promise
+                behind every session.
               </h2>
             </Reveal>
           </div>
@@ -460,7 +427,7 @@ export default function Home() {
                 <figure className="h-full rounded-3xl border border-cream/12 bg-cream/5 p-8">
                   <Quote className="h-9 w-9 text-gold" />
                   <blockquote className="mt-4 font-display text-xl italic leading-relaxed text-cream">
-                    {verse.text}
+                    &ldquo;{verse.text}&rdquo;
                   </blockquote>
                   <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                     {verse.reference}

@@ -53,8 +53,9 @@ export default function Footer() {
             </div>
             <p className="mt-5 text-sm leading-relaxed text-cream/65">
               Compassionate, trauma-informed coaching for individuals, youth,
-              and families — rooted in wisdom, experience, and faith. Healing is
-              possible, and you don&apos;t have to walk through it alone.
+              and families — rooted in God&apos;s word, experience, and faith.
+              Healing is possible, and you don&apos;t have to walk through it
+              alone.
             </p>
           </div>
 
