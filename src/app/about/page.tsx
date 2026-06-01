@@ -131,11 +131,16 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Floating credentials card */}
-              <div className="relative z-10 -mt-12 ml-auto mr-0 w-[88%] rounded-[1.75rem] border border-line bg-paper px-6 py-5 shadow-card sm:w-[78%]">
-                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
-                  Certifications
-                </p>
+              {/* Credentials card — sits cleanly below the photo */}
+              <div className="mt-5 rounded-[1.75rem] border border-line bg-paper px-6 py-5 shadow-card">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
+                    Certifications
+                  </p>
+                  <span className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-gold-deep">
+                    20+ years
+                  </span>
+                </div>
                 <ul className="mt-3 space-y-2.5">
                   {credentials.map((c) => (
                     <li key={c} className="flex items-start gap-2.5">
