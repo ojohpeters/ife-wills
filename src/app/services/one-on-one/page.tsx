@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -79,24 +80,35 @@ export default function OneOnOnePage() {
         <Container className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] bg-linear-to-br from-forest via-forest to-sage-deep p-9 shadow-lift">
-                <div className="bg-grain absolute inset-0" aria-hidden="true" />
-                <BotanicalArt className="absolute -right-8 -top-8 h-72 w-auto text-cream/10" />
-                <div className="relative flex flex-col items-center text-center">
-                  <span className="flex h-28 w-28 items-center justify-center rounded-full bg-cream font-display text-4xl font-medium text-forest shadow-lift">
-                    IW
-                  </span>
-                  <p className="mt-6 font-display text-2xl font-medium text-cream">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-williams.jpg"
+                  alt="Ife Williams — your one-on-one coach"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/95 via-forest-deep/35 to-transparent" />
+                <BotanicalArt className="absolute -right-6 -bottom-2 h-40 w-auto text-cream/15" />
+
+                <span className="absolute top-6 right-6 rounded-full bg-gold/95 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest-deep shadow-soft">
+                  Your one-on-one coach
+                </span>
+
+                <div className="absolute inset-x-0 bottom-0 p-7 text-cream sm:p-8">
+                  <p className="font-display text-[1.9rem] font-medium leading-[1.05]">
                     Ife Williams
                   </p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                    Your one-on-one coach
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+                    Pastor · Trauma-Informed Coach
                   </p>
-                  <div className="mt-7 w-full space-y-3 border-t border-cream/15 pt-7 text-left">
+                  <div className="mt-5 space-y-2 border-t border-cream/15 pt-4 text-left">
                     {credentials.map((c) => (
                       <div key={c} className="flex items-start gap-2.5">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                        <span className="text-sm text-cream/80">{c}</span>
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />
+                        <span className="text-[0.78rem] leading-snug text-cream/85">
+                          {c}
+                        </span>
                       </div>
                     ))}
                   </div>

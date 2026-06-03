@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -200,19 +201,32 @@ export default function Home() {
         <Container className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] border border-line bg-linear-to-br from-sage-soft/70 via-cream-deep to-cream p-10 shadow-soft">
-                <BotanicalArt className="absolute -right-6 -top-6 h-72 w-auto text-sage-deep/20" />
-                <div className="relative flex flex-col items-center text-center">
-                  <span className="flex h-28 w-28 items-center justify-center rounded-full bg-forest font-display text-4xl font-medium text-cream shadow-lift">
-                    IW
-                  </span>
-                  <p className="mt-6 font-display text-2xl font-medium text-forest">
+              <div className="overflow-hidden rounded-[2.25rem] border border-line bg-paper shadow-soft">
+                <div className="relative aspect-[5/6] w-full">
+                  <Image
+                    src="/ife-williams.jpg"
+                    alt="Ife Williams — trauma-informed coach"
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 32rem"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
+                    <span className="rounded-full bg-cream/95 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest shadow-soft backdrop-blur-sm">
+                      Trauma-informed
+                    </span>
+                    <span className="rounded-full bg-gold px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest-deep shadow-soft">
+                      20+ years
+                    </span>
+                  </div>
+                </div>
+                <div className="p-7 sm:p-8">
+                  <p className="font-display text-2xl font-medium text-forest">
                     Ife Williams
                   </p>
                   <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-sage-deep">
                     Trauma-Informed Coach &amp; Pastor
                   </p>
-                  <div className="mt-7 w-full space-y-2.5 border-t border-line pt-7 text-left">
+                  <div className="mt-5 space-y-2.5 border-t border-line pt-5 text-left">
                     {credentials.map((credential) => (
                       <div
                         key={credential}

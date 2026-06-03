@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SpeakingForm from "@/components/SpeakingForm";
@@ -50,29 +51,36 @@ export default function SpeakingPage() {
         <Container className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] bg-linear-to-br from-forest via-forest-deep to-sage-deep p-9 shadow-lift">
-                <div className="bg-grain absolute inset-0" aria-hidden="true" />
-                <BotanicalArt className="absolute -right-8 -top-8 h-72 w-auto text-cream/10" />
-                <div className="relative flex aspect-[4/5] flex-col justify-between">
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-cream/10 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
-                      Available now
-                    </span>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep">
-                      <Mic className="h-6 w-6" />
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
-                      Speaking · Trauma-Informed · Faith-Rooted
-                    </p>
-                    <p className="mt-3 font-display text-[2.2rem] font-medium leading-[1.05] text-cream">
-                      Ife Williams
-                    </p>
-                    <p className="mt-1 font-display text-base italic text-cream/70">
-                      Pastor, coach &amp; speaker
-                    </p>
-                  </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-williams.jpg"
+                  alt="Ife Williams — speaker, pastor and coach"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/25 to-transparent" />
+                <BotanicalArt className="absolute -right-8 -bottom-4 h-44 w-auto text-cream/15" />
+
+                <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
+                  <span className="rounded-full bg-cream/95 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest shadow-soft backdrop-blur-sm">
+                    Available now
+                  </span>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep shadow-soft">
+                    <Mic className="h-6 w-6" />
+                  </span>
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 p-7 text-cream sm:p-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                    Speaking · Trauma-Informed · Faith-Rooted
+                  </p>
+                  <p className="mt-3 font-display text-[2.1rem] font-medium leading-[1.05]">
+                    Ife Williams
+                  </p>
+                  <p className="mt-1 font-display text-base italic text-cream/80">
+                    Pastor, coach &amp; speaker
+                  </p>
                 </div>
               </div>
 
