@@ -136,9 +136,6 @@ export default function BookingForm() {
                 {service.name}
               </option>
             ))}
-            <option value="Intake & Assessment Session">
-              Intake &amp; Assessment Session
-            </option>
             <option value="Not sure yet">
               I&apos;m not sure yet — please advise
             </option>

@@ -180,22 +180,19 @@ export const servicesIntro = {
     "Each service provides a safe, confidential, and grace-filled environment where clients can heal, grow, and regain emotional stability — all through guidance rooted in biblical truth and tailored to each person's unique needs.",
 };
 
-export const addOns = [
-  {
-    icon: "clipboard",
-    name: "Intake & Assessment Session",
-    length: "75 minutes",
-    fee: "$175",
-    note: "A thorough first session to understand your story, needs, and goals before ongoing coaching begins.",
-  },
-];
+export const addOns: {
+  icon: string;
+  name: string;
+  length: string;
+  fee: string;
+  note: string;
+}[] = [];
 
 export const feeSchedule = [
   { service: "One-on-One Coaching · Single Session", length: "60 minutes", fee: "$150" },
   { service: "One-on-One · 4-Session Bundle", length: "4 × 60 minutes", fee: "$570" },
   { service: "One-on-One · 8-Session Journey", length: "8 × 60 minutes", fee: "$1,080" },
   { service: "Group Coaching — Grave Mind to Grace Mind", length: "6 modules · weekly live", fee: "Contact for cohort pricing" },
-  { service: "Intake & Assessment Session", length: "75 minutes", fee: "$175" },
 ];
 
 /* ====================== ONE-ON-ONE COACHING ====================== */

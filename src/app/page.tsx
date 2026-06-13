@@ -15,7 +15,6 @@ import {
   Icon,
   Quote,
   Sprout,
-  Star,
 } from "@/components/icons";
 import {
   audience,
@@ -25,7 +24,6 @@ import {
   principles,
   scripture,
   services,
-  stats,
   trustedGuide,
 } from "@/lib/content";
 
@@ -71,60 +69,41 @@ export default function Home() {
                 </Button>
               </div>
             </Reveal>
-            <Reveal delay={360}>
-              <div className="mt-11 flex flex-wrap items-center gap-x-9 gap-y-5 border-t border-line pt-7">
-                {stats.map((stat) => (
-                  <div key={stat.label}>
-                    <p className="font-display text-[1.7rem] font-medium leading-none text-forest">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1.5 text-xs leading-snug text-stone">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
 
           {/* Art panel */}
           <Reveal delay={220} className="relative">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] bg-linear-to-br from-forest via-forest to-sage-deep p-9 shadow-lift">
-                <div className="bg-grain absolute inset-0" aria-hidden="true" />
-                <BotanicalArt className="absolute left-1/2 top-1/2 h-[118%] w-auto -translate-x-1/2 -translate-y-1/2 text-cream/10" />
-                <div className="relative flex aspect-[4/5] flex-col justify-between">
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-cream/10 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
-                      Virtual · faith-rooted
-                    </span>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-cream">
-                      <Sprout className="h-6 w-6" />
-                    </span>
-                  </div>
-                  <div>
-                    <Quote className="h-10 w-10 text-gold" />
-                    <p className="mt-4 font-display text-[1.7rem] italic leading-snug text-cream">
-                      Every person deserves a safe place to heal, grow, and
-                      rediscover hope.
-                    </p>
-                    <p className="mt-5 text-sm font-medium tracking-wide text-cream/65">
-                      — Ife Williams
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-home.jpg"
+                  alt="Ife Williams — trauma-informed coach and pastor"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 32rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/30 to-forest-deep/20" />
+                <BotanicalArt className="absolute -right-8 -bottom-4 h-44 w-auto text-cream/15" />
 
-              {/* Floating cards */}
-              <div className="animate-float absolute -left-4 top-14 flex items-center gap-3 rounded-2xl border border-line bg-paper/95 px-4 py-3 shadow-card backdrop-blur-sm sm:-left-7">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft/60 text-sage-deep">
-                  <Star className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-forest">
-                    20+ years
+                <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
+                  <span className="rounded-full bg-cream/15 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream backdrop-blur-md">
+                    Virtual · faith-rooted
+                  </span>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/15 text-cream backdrop-blur-md">
+                    <Sprout className="h-6 w-6" />
+                  </span>
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 p-7 text-cream sm:p-8">
+                  <Quote className="h-9 w-9 text-gold" />
+                  <p className="mt-3 font-display text-[1.55rem] italic leading-snug text-cream sm:text-[1.7rem]">
+                    Every person deserves a safe place to heal, grow, and
+                    rediscover hope.
                   </p>
-                  <p className="text-xs text-stone">walking with people</p>
+                  <p className="mt-4 text-sm font-medium tracking-wide text-cream/70">
+                    — Ife Williams
+                  </p>
                 </div>
               </div>
 
@@ -210,14 +189,6 @@ export default function Home() {
                     sizes="(max-width: 1024px) 90vw, 32rem"
                     className="object-cover"
                   />
-                  <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
-                    <span className="rounded-full bg-cream/95 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest shadow-soft backdrop-blur-sm">
-                      Trauma-informed
-                    </span>
-                    <span className="rounded-full bg-gold px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-forest-deep shadow-soft">
-                      20+ years
-                    </span>
-                  </div>
                 </div>
                 <div className="p-7 sm:p-8">
                   <p className="font-display text-2xl font-medium text-forest">
