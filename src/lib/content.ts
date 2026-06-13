@@ -121,6 +121,7 @@ export type Service = {
   idealFor: string[];
   length: string;
   fee: string;
+  image: { src: string; alt: string };
 };
 
 export const services: Service[] = [
@@ -143,6 +144,10 @@ export const services: Service[] = [
     ],
     length: "60 minutes · virtual",
     fee: "From $150 / session",
+    image: {
+      src: "/coaching-virtual.jpg",
+      alt: "A coach in virtual session with a client",
+    },
   },
   {
     slug: "group-coaching",
@@ -161,6 +166,10 @@ export const services: Service[] = [
     ],
     length: "6 modules · weekly 60–90 min live",
     fee: "Cohort program — pricing on request",
+    image: {
+      src: "/group-community.jpg",
+      alt: "A close-knit group standing together in community",
+    },
   },
 ];
 

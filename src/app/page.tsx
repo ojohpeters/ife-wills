@@ -202,9 +202,9 @@ export default function Home() {
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
               <div className="overflow-hidden rounded-[2.25rem] border border-line bg-paper shadow-soft">
-                <div className="relative aspect-[5/6] w-full">
+                <div className="relative aspect-[3/4] w-full">
                   <Image
-                    src="/ife-williams.jpg"
+                    src="/ife-portrait-suit.jpg"
                     alt="Ife Williams — trauma-informed coach"
                     fill
                     sizes="(max-width: 1024px) 90vw, 32rem"
@@ -307,18 +307,26 @@ export default function Home() {
               <Reveal key={service.slug} delay={i * 110}>
                 <Link
                   href={service.href}
-                  className="group block h-full rounded-3xl border border-line bg-paper p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card"
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-all duration-300 hover:-translate-y-1 hover:border-sage hover:shadow-card"
                 >
-                  <div className="flex h-full flex-col">
-                    <div className="flex items-start justify-between">
-                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-forest text-cream">
-                        <Icon name={service.icon} className="h-7 w-7" />
-                      </span>
-                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep">
-                        {service.length}
-                      </span>
-                    </div>
-                    <h3 className="mt-6 font-display text-2xl font-medium leading-snug text-forest">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <Image
+                      src={service.image.src}
+                      alt={service.image.alt}
+                      fill
+                      sizes="(max-width: 768px) 90vw, 36rem"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/45 via-forest/10 to-transparent" />
+                    <span className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-paper/95 text-forest shadow-soft backdrop-blur-sm">
+                      <Icon name={service.icon} className="h-6 w-6" />
+                    </span>
+                    <span className="absolute right-5 top-5 rounded-full bg-paper/95 px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-forest shadow-soft backdrop-blur-sm">
+                      {service.length}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-7 sm:p-8">
+                    <h3 className="font-display text-2xl font-medium leading-snug text-forest">
                       {service.name}
                     </h3>
                     <p className="mt-2 font-display text-base italic text-sage-deep">

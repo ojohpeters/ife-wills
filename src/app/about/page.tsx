@@ -160,12 +160,26 @@ export default function AboutPage() {
       {/* ============ JOURNEY ============ */}
       <section className="border-t border-line bg-cream-deep/45 py-24 sm:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-          <Reveal>
-            <Eyebrow>{journey.eyebrow}</Eyebrow>
-            <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
-              From real-world moments — not textbooks.
-            </h2>
-          </Reveal>
+          <div className="space-y-8">
+            <Reveal>
+              <Eyebrow>{journey.eyebrow}</Eyebrow>
+              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+                From real-world moments — not textbooks.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-soft">
+                <Image
+                  src="/group-community.jpg"
+                  alt="A close-knit group standing together — community as part of the healing journey"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/30 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+          </div>
           <div className="space-y-5 text-base leading-relaxed text-stone">
             {journey.paragraphs.map((p, i) => (
               <Reveal key={i} delay={120 + i * 60}>
@@ -188,12 +202,26 @@ export default function AboutPage() {
       {/* ============ FOUNDATION ============ */}
       <section className="py-24 sm:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-          <Reveal>
-            <Eyebrow>{foundation.eyebrow}</Eyebrow>
-            <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
-              {foundation.title}
-            </h2>
-          </Reveal>
+          <div className="space-y-8">
+            <Reveal>
+              <Eyebrow>{foundation.eyebrow}</Eyebrow>
+              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+                {foundation.title}
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="relative aspect-square w-full overflow-hidden rounded-[2rem] shadow-soft">
+                <Image
+                  src="/bible-foundation.jpg"
+                  alt="An open Bible with highlighted verses — Scripture as the coaching foundation"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/30 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+          </div>
           <div className="space-y-5 text-base leading-relaxed text-stone">
             {foundation.paragraphs.map((p, i) => (
               <Reveal key={i} delay={120 + i * 60}>

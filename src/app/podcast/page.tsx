@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -181,23 +182,38 @@ export default function PodcastPage() {
         <div className="bg-grain absolute inset-0" aria-hidden="true" />
         <BotanicalArt className="absolute -right-12 -top-16 h-96 w-auto text-cream/8" />
         <Container className="relative py-24 sm:py-28">
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <Reveal>
-              <div className="flex justify-center">
-                <Eyebrow tone="light">Why This Podcast Matters</Eyebrow>
+              <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-podcast.jpg"
+                  alt="Ife Williams at the podcast microphone — black and white"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 32rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/60 via-forest-deep/10 to-transparent" />
+                <span className="absolute left-5 top-5 rounded-full bg-cream/15 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream backdrop-blur-md">
+                  In the studio
+                </span>
               </div>
             </Reveal>
-            <Reveal delay={80}>
-              <Quote className="mx-auto mt-7 h-10 w-10 text-gold" />
-            </Reveal>
-            <Reveal delay={140}>
-              <p className="mt-6 font-display text-2xl italic leading-relaxed text-cream sm:text-3xl md:text-[2rem]">
-                Young people and adults need voices that speak truth, hope,
-                and healing. This podcast creates a safe space for listeners
-                to learn, grow, and encounter God&apos;s heart for
-                restoration.
-              </p>
-            </Reveal>
+            <div>
+              <Reveal>
+                <Eyebrow tone="light">Why This Podcast Matters</Eyebrow>
+              </Reveal>
+              <Reveal delay={80}>
+                <Quote className="mt-7 h-10 w-10 text-gold" />
+              </Reveal>
+              <Reveal delay={140}>
+                <p className="mt-6 font-display text-2xl italic leading-relaxed text-cream sm:text-3xl md:text-[2rem]">
+                  Young people and adults need voices that speak truth, hope,
+                  and healing. This podcast creates a safe space for listeners
+                  to learn, grow, and encounter God&apos;s heart for
+                  restoration.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </Container>
       </section>

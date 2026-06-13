@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -133,10 +134,30 @@ export default function ServicesPage() {
             title="An intake session for a thoughtful starting point."
             description="When you're ready for ongoing work, an in-depth intake gives Ife a clear understanding of your story before coaching begins."
           />
-          <div className="mx-auto mt-14 grid max-w-3xl gap-6">
+          <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch lg:gap-10">
+            <Reveal>
+              <div className="relative h-full min-h-72 overflow-hidden rounded-[2rem] shadow-soft">
+                <Image
+                  src="/intake-support.jpg"
+                  alt="A hand resting gently on someone's shoulder during a counseling session"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-forest-deep/55 via-forest/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-7 text-cream sm:p-8">
+                  <p className="text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-gold">
+                    A steady starting point
+                  </p>
+                  <p className="mt-3 font-display text-2xl font-medium leading-snug sm:text-[1.7rem]">
+                    Bring your story into a calm, judgment-free space.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
             {addOns.map((addon, i) => (
-              <Reveal key={addon.name} delay={i * 110}>
-                <article className="flex h-full flex-col rounded-3xl border border-line bg-paper p-8 sm:p-10">
+              <Reveal key={addon.name} delay={i * 110 + 90}>
+                <article className="flex h-full flex-col rounded-[2rem] border border-line bg-paper p-8 sm:p-10">
                   <div className="flex items-start justify-between gap-4">
                     <span className="flex h-13 w-13 items-center justify-center rounded-2xl bg-sage-soft/55 text-sage-deep">
                       <Icon name={addon.icon} className="h-6 w-6" />
@@ -151,7 +172,7 @@ export default function ServicesPage() {
                   <p className="mt-1 text-sm font-medium text-sage-deep">
                     {addon.length}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-stone">
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-stone">
                     {addon.note}
                   </p>
                 </article>
@@ -247,18 +268,31 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* DECORATIVE BAND */}
+      {/* DECORATIVE BAND with COUNSELOR image */}
       <section className="relative overflow-hidden bg-cream-deep/55 py-20">
         <BotanicalArt className="absolute -left-12 -top-10 h-72 w-auto text-sage/20" />
         <BotanicalArt className="absolute -right-12 -bottom-12 h-72 w-auto rotate-180 text-sage/20" />
-        <Container className="relative text-center">
-          <Reveal>
-            <p className="mx-auto max-w-2xl font-display text-2xl italic leading-relaxed text-forest sm:text-[1.7rem]">
-              Whether you&apos;re seeking one-on-one support or the community
-              of a group cohort, you deserve a space where you can heal, grow,
-              and feel supported every step of the way.
-            </p>
-          </Reveal>
+        <Container className="relative">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <Reveal>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-card">
+                <Image
+                  src="/counselor-sign.jpg"
+                  alt="A green counselor sign — pointing the way to support"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 32rem"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="font-display text-2xl italic leading-relaxed text-forest sm:text-[1.7rem]">
+                Whether you&apos;re seeking one-on-one support or the community
+                of a group cohort, you deserve a space where you can heal,
+                grow, and feel supported every step of the way.
+              </p>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

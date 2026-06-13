@@ -53,13 +53,13 @@ export default function SpeakingPage() {
             <div className="relative mx-auto w-full max-w-md">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] shadow-lift">
                 <Image
-                  src="/ife-williams.jpg"
-                  alt="Ife Williams — speaker, pastor and coach"
+                  src="/ife-speaking.jpg"
+                  alt="Ife Williams speaking with a microphone in front of an audience"
                   fill
                   sizes="(max-width: 1024px) 90vw, 36rem"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest-deep/20 to-transparent" />
                 <BotanicalArt className="absolute -right-8 -bottom-4 h-44 w-auto text-cream/15" />
 
                 <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
@@ -280,14 +280,21 @@ export default function SpeakingPage() {
 
             <Reveal delay={120} className="relative">
               <div className="relative mx-auto w-full max-w-md">
-                <div className="relative overflow-hidden rounded-[2.25rem] border border-cream/15 bg-cream/5 p-10 backdrop-blur-sm">
-                  <BotanicalArt className="absolute left-1/2 top-1/2 h-[120%] w-auto -translate-x-1/2 -translate-y-1/2 text-cream/12" />
-                  <div className="relative flex aspect-square flex-col justify-between">
+                <div className="relative aspect-square overflow-hidden rounded-[2.25rem] border border-cream/15 shadow-lift">
+                  <Image
+                    src="/podcast-mic.jpg"
+                    alt="Studio microphone and headphones on a forest-green backdrop"
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 28rem"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest-deep/35 to-forest-deep/10" />
+                  <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-cream/10 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
+                      <span className="rounded-full bg-cream/15 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream backdrop-blur-md">
                         Weekly Episodes
                       </span>
-                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep shadow-soft">
                         <Mic className="h-6 w-6" />
                       </span>
                     </div>
@@ -295,7 +302,7 @@ export default function SpeakingPage() {
                       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
                         Hear Ife&apos;s voice
                       </p>
-                      <h3 className="mt-3 font-display text-[2.2rem] font-medium leading-[1.05] text-cream">
+                      <h3 className="mt-3 font-display text-[2.1rem] font-medium leading-[1.05] text-cream">
                         Rebuilding
                         <br />
                         Broken Walls
