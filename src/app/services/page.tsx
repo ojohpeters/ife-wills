@@ -123,6 +123,42 @@ export default function ServicesPage() {
         </Container>
       </section>
 
+      {/* SUPPORT IMAGE BAND (replaces the removed Intake section per the brief) */}
+      <section className="bg-cream-deep/55 py-24 sm:py-28">
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+            <Reveal>
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] shadow-card">
+                <Image
+                  src="/intake-support.jpg"
+                  alt="A hand resting gently on someone's shoulder during a coaching session"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 36rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-forest-deep/20 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <Eyebrow>Compassionate · Confidential</Eyebrow>
+              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
+                A safe place to be seen, heard, and supported.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-stone sm:text-lg">
+                Every session is an invitation to breathe, process, and take
+                meaningful steps toward wholeness — with a coach who walks
+                beside you, not above you.
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-stone sm:text-lg">
+                Whether you arrive carrying a fresh wound or a story long
+                quiet, the space you find here will be calm, judgment-free,
+                and shaped by the heart of God.
+              </p>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
       {/* FEE SCHEDULE */}
       <section className="py-24 sm:py-28">
         <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-16">

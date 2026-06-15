@@ -180,37 +180,35 @@ export default function Home() {
         <Container className="grid gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
           <Reveal className="relative order-2 lg:order-1">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="overflow-hidden rounded-[2.25rem] border border-line bg-paper shadow-soft">
-                <div className="relative aspect-[3/4] w-full">
-                  <Image
-                    src="/ife-portrait-suit.jpg"
-                    alt="Ife Williams — trauma-informed coach"
-                    fill
-                    sizes="(max-width: 1024px) 90vw, 32rem"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-7 sm:p-8">
-                  <p className="font-display text-2xl font-medium text-forest">
-                    Ife Williams
-                  </p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-sage-deep">
-                    Trauma-Informed Coach &amp; Pastor
-                  </p>
-                  <div className="mt-5 space-y-2.5 border-t border-line pt-5 text-left">
-                    {credentials.map((credential) => (
-                      <div
-                        key={credential}
-                        className="flex items-start gap-2.5"
-                      >
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
-                        <span className="text-sm text-stone">
-                          {credential}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/ife-portrait-suit.jpg"
+                  alt="Ife Williams — trauma-informed coach"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 32rem"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-5 rounded-[1.75rem] border border-line bg-paper px-6 py-5 shadow-card">
+                <p className="font-display text-xl font-medium text-forest">
+                  Ife Williams
+                </p>
+                <p className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
+                  Trauma-Informed Coach &amp; Pastor
+                </p>
+                <ul className="mt-4 space-y-2 border-t border-line pt-4">
+                  {credentials.map((credential) => (
+                    <li
+                      key={credential}
+                      className="flex items-start gap-2.5"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-deep" />
+                      <span className="text-sm leading-snug text-stone">
+                        {credential}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </Reveal>
