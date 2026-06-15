@@ -20,7 +20,6 @@ import {
   Mic,
   Phone,
   Quote,
-  Star,
 } from "@/components/icons";
 import { credentials, podcast, site, speaking } from "@/lib/content";
 
@@ -81,18 +80,6 @@ export default function SpeakingPage() {
                   <p className="mt-1 font-display text-base italic text-cream/80">
                     Pastor, coach &amp; speaker
                   </p>
-                </div>
-              </div>
-
-              <div className="animate-float absolute -left-4 top-12 flex items-center gap-3 rounded-2xl border border-line bg-paper/95 px-4 py-3 shadow-card backdrop-blur-sm sm:-left-7">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sage-soft/65 text-sage-deep">
-                  <Star className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-forest">
-                    20+ years
-                  </p>
-                  <p className="text-xs text-stone">of pastoral &amp; coaching practice</p>
                 </div>
               </div>
 

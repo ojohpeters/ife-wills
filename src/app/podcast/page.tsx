@@ -55,15 +55,21 @@ export default function PodcastPage() {
         <Container className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
           <Reveal className="relative">
             <div className="relative mx-auto w-full max-w-md">
-              <div className="relative overflow-hidden rounded-[2.25rem] bg-linear-to-br from-forest via-forest-deep to-sage-deep p-10 shadow-lift">
-                <div className="bg-grain absolute inset-0" aria-hidden="true" />
-                <BotanicalArt className="absolute left-1/2 top-1/2 h-[120%] w-auto -translate-x-1/2 -translate-y-1/2 text-cream/10" />
-                <div className="relative flex aspect-square flex-col justify-between">
+              <div className="relative aspect-square overflow-hidden rounded-[2.25rem] shadow-lift">
+                <Image
+                  src="/podcast-mic.jpg"
+                  alt="Studio microphone and headphones on a forest-green backdrop"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 28rem"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/35 to-forest-deep/15" />
+                <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-cream/10 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream/85">
+                    <span className="rounded-full bg-cream/15 px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-cream backdrop-blur-md">
                       Weekly Episodes
                     </span>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-forest-deep shadow-soft">
                       <Mic className="h-6 w-6" />
                     </span>
                   </div>
