@@ -164,24 +164,23 @@ export default function ServicesPage() {
         <Container className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-16">
           <div>
             <Reveal>
-              <Eyebrow>Session Types &amp; Fees</Eyebrow>
+              <Eyebrow>Session Types</Eyebrow>
             </Reveal>
             <Reveal delay={90}>
               <h2 className="mt-5 font-display text-3xl font-medium leading-[1.14] tracking-tight text-forest sm:text-4xl">
-                A clear, transparent overview of every rate.
+                A clear overview of every session at a glance.
               </h2>
             </Reveal>
             <Reveal delay={150}>
               <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-paper">
-                <div className="grid grid-cols-[1.6fr_1fr_0.9fr] gap-4 bg-forest px-6 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-cream/85">
+                <div className="grid grid-cols-[1.6fr_1fr] gap-4 bg-forest px-6 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-cream/85">
                   <span>Service</span>
-                  <span>Session Length</span>
-                  <span className="text-right">Fee</span>
+                  <span className="text-right">Session Length</span>
                 </div>
                 {feeSchedule.map((row, i) => (
                   <div
                     key={row.service}
-                    className={`grid grid-cols-[1.6fr_1fr_0.9fr] items-center gap-4 px-6 py-4 ${
+                    className={`grid grid-cols-[1.6fr_1fr] items-center gap-4 px-6 py-4 ${
                       i !== feeSchedule.length - 1
                         ? "border-b border-line"
                         : ""
@@ -190,9 +189,8 @@ export default function ServicesPage() {
                     <span className="text-sm font-medium text-forest">
                       {row.service}
                     </span>
-                    <span className="text-sm text-stone">{row.length}</span>
-                    <span className="text-right font-display text-base font-medium leading-tight text-forest sm:text-lg">
-                      {row.fee}
+                    <span className="text-right text-sm text-stone">
+                      {row.length}
                     </span>
                   </div>
                 ))}
