@@ -36,6 +36,10 @@
 }
 
 html {
+  /* Match the footer color so iOS Safari rubber-band overscroll at the
+     bottom of the page blends into the footer instead of showing a
+     white gap. */
+  background-color: var(--color-forest);
   scroll-behavior: smooth;
   scroll-padding-top: 6.5rem;
   -webkit-text-size-adjust: 100%;

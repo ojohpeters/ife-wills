@@ -86,7 +86,7 @@ export default function OneOnOnePage() {
                   alt="Ife Williams — your one-on-one coach"
                   fill
                   sizes="(max-width: 1024px) 90vw, 36rem"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/95 via-forest-deep/35 to-transparent" />
                 <BotanicalArt className="absolute -right-6 -bottom-2 h-40 w-auto text-cream/15" />

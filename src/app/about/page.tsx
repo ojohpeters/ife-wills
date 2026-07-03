@@ -114,7 +114,7 @@ export default function AboutPage() {
                   fill
                   sizes="(max-width: 1024px) 90vw, 36rem"
                   priority
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest/25 to-transparent" />
                 <BotanicalArt className="absolute -right-6 -bottom-4 h-44 w-auto text-cream/20" />

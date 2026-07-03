@@ -81,7 +81,7 @@ export default function Home() {
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 32rem"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/30 to-forest-deep/20" />
                 <BotanicalArt className="absolute -right-8 -bottom-4 h-44 w-auto text-cream/15" />
